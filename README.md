@@ -1,4 +1,7 @@
-Temat Labolatorium Naukowego: Wykorzystanie metod uczenia maszynowego do identyfikacji cząstek w eksperymentach fizyki jądrowej. Opiekun dr inż. Daniel Kikoła. Osoby wykonujące ćwiczenie - Łukasz Sawicki, Krzysztof Palmi, i ta co nic nie robi - Nika Jurczuk (ale ją wpisałem tylko z litości, żeby sie nie popłakała, bo to beksa)
+# Scientific Laboratory: Using Machine Learning for particle identification in HEP (High Energy Physics) experiments
+Tutor: dr inż. Daniel Kikoła. 
+Participants - Łukasz Sawicki, Krzysztof Palmi, and girl (ewww) Nika Jurczuk. 
 
 
-Sprawozdanie z projektu: https://www.overleaf.com/read/gdxskfzqfndd
+#Lab report (PL version for now): 
+https://www.overleaf.com/read/gdxskfzqfndd
