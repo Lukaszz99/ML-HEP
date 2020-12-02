@@ -2,41 +2,29 @@
 
 import ROOT as root
 import numpy as np
-import pandas as pd
-import time
 
-import matplotlib.pyplot as plt
+from custom_fnk import load_root, root_tree2array, label_position, make_hist
 
-start_time = time.time()
 
 #clear global variables
 root.gROOT.Reset()
 
-# The conversion of the TTree to a numpy array is implemented with multi-
-# thread support.
-# About 2 times faster on I5-7200U with D0_Signal_MonteCarlo.root file
-root.ROOT.EnableImplicitMT()
+root_file, root_objects = load_root()
 
-filename = '../data/D0_Signal_MonteCarlo.root'
-file = root.TFile(filename, option='READ')
-
-print(f'Loading file {filename} ...')
-
-# print('List of objects in', filename)
-# for key in file.GetListOfKeys():
-#   print(key.GetClassName(), key.GetName())
-
-#print(f'\nType tree name to load:')
+#print('Type object to read', root_objects)
 #tree_name = input()
-
 tree_name = 'ntpD0'
-tree = file.Get(tree_name)
 
-data, labels = tree.AsMatrix(return_labels=True)
+if not tree_name in root_objects:
+    print('Wrong value! abroting...')
+    exit(1)
 
-print(f'Data loaded. Execution time {time.time() - start_time:.4f}')
+array, labels = root_tree2array(root_file, tree_name)
 
-test_data = data[:100]
+for _ in range(5):
+    print('Choose variable to deal with: ', labels)
+    leaf = input()
 
-plt.hist(x=test_data, bins=10, histtype='step')
-plt.show()
+    leaf_index = label_position(labels, leaf)
+
+    make_hist(x=array[:1000, leaf_index], bins=100, label=leaf)
