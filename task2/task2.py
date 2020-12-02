@@ -2,12 +2,15 @@
 
 import ROOT as root
 import numpy as np
+import time
 
 from custom_fnk import load_root, root_tree2array, label_position, make_hist
 
 
 #clear global variables
 root.gROOT.Reset()
+
+start_time = time.time()
 
 root_file, root_objects = load_root()
 
@@ -21,10 +24,14 @@ if not tree_name in root_objects:
 
 array, labels = root_tree2array(root_file, tree_name)
 
-for _ in range(5):
-    print('Choose variable to deal with: ', labels)
-    leaf = input()
+print(f'Data loaded! Time: {time.time() - start_time:.4f}')
 
+#tot_entries = array.shape[0]
+#print(f'Total entries in file {tot_entries}')
+
+for leaf in labels:
+    entries = 50000
     leaf_index = label_position(labels, leaf)
+    arr = array[:entries, leaf_index]
 
-    make_hist(x=array[:1000, leaf_index], bins=100, label=leaf)
+    make_hist(x=arr, bins=100, label=leaf, entries=entries, mean=np.mean(arr), std=np.std(arr))
