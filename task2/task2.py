@@ -30,7 +30,7 @@ print(f'Data loaded! Time: {time.time() - start_time:.4f}')
 #print(f'Total entries in file {tot_entries}')
 
 for leaf in labels:
-    entries = 100000
+    entries = 2000000
     leaf_index = label_position(labels, leaf)
     arr = array[:entries, leaf_index]
 

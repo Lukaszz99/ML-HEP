@@ -32,7 +32,7 @@ def label_position(list, name):
     return list.index(name)
 
 def make_hist(x, bins, label, entries, mean, std):
-    hist_desc = f'Entries {entries} \nmean {mean:.4f} \nStd dev {std:.4f}'
+    hist_desc = f'Entries {format(entries, ".2e")} \nMean {mean:.4f} \nStd dev {std:.4f}'
     img_path = f'img/{label}.png'
 
     plt.hist(x=x, bins=bins, histtype='step', label=hist_desc)
