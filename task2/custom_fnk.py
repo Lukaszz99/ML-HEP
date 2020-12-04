@@ -11,7 +11,7 @@ def load_root(filename):
     file = root.TFile(filename, option='READ')
 
     # list of objects in root file
-    objects = [key.GetName() for key in file.GetListOfKeys()]
+    objects = [key.GetName() for key in file.GetListOfKeys() if key.GetClassName() == 'TNtuple']
 
     return file, objects
 

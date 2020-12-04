@@ -1,4 +1,10 @@
-#!/usr/bin/env python3
+"""
+To działa, ale robi wykresy niepotrzebnych rzeczy, więc nie uzywac,
+a traktować jako przykładowy kod!
+"""
+
+
+"""#!/usr/bin/env python3
 
 import ROOT as root
 import numpy as np
@@ -36,4 +42,4 @@ for leaf in labels:
     leaf_index = label_position(labels, leaf)
     arr = array[:entries, leaf_index]
 
-    make_hist(x=arr, bins=100, label=leaf, entries=entries, mean=np.mean(arr), std=np.std(arr))
+    make_hist(x=arr, bins=100, label=leaf, entries=entries, mean=np.mean(arr), std=np.std(arr))"""
