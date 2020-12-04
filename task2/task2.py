@@ -12,7 +12,9 @@ root.gROOT.Reset()
 
 start_time = time.time()
 
-root_file, root_objects = load_root()
+filename = '../data/D0_Signal_MonteCarlo.root'
+
+root_file, root_objects = load_root(filename)
 
 #print('Type object to read', root_objects)
 #tree_name = input()

@@ -5,8 +5,7 @@ import numpy as np
 
 import matplotlib.pyplot as plt
 
-def load_root():
-    filename = '../data/D0_Signal_MonteCarlo.root'
+def load_root(filename):
     print(f'Loading file {filename} ...')
 
     file = root.TFile(filename, option='READ')
