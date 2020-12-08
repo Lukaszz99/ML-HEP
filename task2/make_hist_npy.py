@@ -1,11 +1,13 @@
+#!/usr/bin/env python3
 import numpy as np
 import sys, getopt
 import time
 
-from custom_fnk import make_hist, make_hist_weight, label_position
+from custom_fnk import make_hist, label_position #make_hist_weight
 
 
 def make_hist_signal(array, labels):
+    '''It requires img/ directory to work!!!'''
     make_hist(array[:, label_position(labels, 'm')], 22, 'Signal_mass_pt12', 'mass [GeV / c^2]', 1.862, 1.866)
     make_hist(array[:, label_position(labels, 'pt')], 150, 'Signal_pt_12', 'pt [GeV]')
     make_hist(array[:, label_position(labels, 'decayLength')], 150, 'Signal_decayLength_pt_12', 'pt [GeV]')
@@ -26,7 +28,7 @@ def main(argv):
         sys.exit(2)
 
     if len(opts) != 1:
-        print(f'I need 1 arguments only')
+        print(f'I need 1 argument only in format ./[program_name] -i <input_file.npy>')
         sys.exit(1)
 
     for opt, arg in opts:
@@ -39,9 +41,9 @@ def main(argv):
 
     labels = list(array[:1].astype(str)[0])
     array = array[1:].astype('float64')
-    print(f'Loaded in {time.time() - start:.2f}')
+    print(f'Loaded in {time.time() - start:.2f}s')
 
-    #make_hist_signal(array, labels)
+    make_hist_signal(array, labels)
 
     #make_hist_signal_weight(array, labels)
 
