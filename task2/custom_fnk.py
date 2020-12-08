@@ -30,13 +30,20 @@ def root_tree2array(root_file, tree_name):
 def label_position(list, name):
     return list.index(name)
 
-def make_hist(x, bins, label, entries, mean, std):
-    hist_desc = f'Entries {format(entries, ".2e")} \nMean {mean:.4f} \nStd dev {std:.4f}'
-    img_path = f'img/{label}.png'
+def make_hist(x, bins, title, x_label='', weights=None, x_min=None, x_max=None):
+    hist_desc = f'Entries {format(x.shape[0], ".2e")}\
+         \nMean {np.mean(x):.4f} \nStd dev {np.std(x):.4f}'
+    img_path = f'img/{title}.png'
 
     plt.hist(x=x, bins=bins, histtype='step', label=hist_desc)
-    plt.title(label)
+
+    if not x_min == None:
+        plt.autoscale(enable=False, axis='x')
+        plt.xlim((x_min, x_max))
+
+    plt.title(title)
     plt.ylabel('Counts')
+    plt.xlabel(x_label)
     plt.legend(loc='best')
     plt.savefig(img_path)
     plt.show()
