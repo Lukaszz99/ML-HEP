@@ -39,9 +39,8 @@ def main(argv):
 
 
 def error_checker(argv):
-    """
-    Check if argv is correct and return parsed in/out file and min, max pt
-    """
+    """Check if argv is correct and return parsed in/out file and min, max pt using getopt (C-style parser for cmd).
+       Argv should be in following order: -i <inputfile> -o <outputfile> -l <min_pt> -h <max_pt>"""
     try:
         opts, args = getopt.getopt(argv, 'i:o:l:h:')
     except getopt.GetoptError:
@@ -63,7 +62,7 @@ def error_checker(argv):
             max_pt = int(arg)
 
     if min_pt >= max_pt:
-        print('min_pt must be lower than max_pt! Aboring...')
+        print('min_pt must be lower than max_pt! Aborting...')
         sys.exit(3)
 
     return inputfile, outputfile, min_pt, max_pt
