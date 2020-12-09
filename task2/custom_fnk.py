@@ -32,13 +32,13 @@ def label_position(list, name):
     '''Returns an index of the requested label in a list.'''
     return list.index(name)
 
-def make_hist(x, bins, title, x_label='', weights=None, x_min=None, x_max=None):
+def make_hist(x, bins, title, x_label='', x_min=None, x_max=None, weights=None, output_folder=''):
     '''Making histogram using matplotlib.'''
     hist_desc = f'Entries {format(x.shape[0], ".2e")}\
          \nMean {np.mean(x):.4f} \nStd dev {np.std(x):.4f}'
-    img_path = f'img/{title}.png'
-
-    plt.hist(x=x, bins=bins, histtype='step', label=hist_desc)
+    img_path = f'{output_folder}{title}.png'
+    plt.clf() # clear buffer before making next histogram!
+    plt.hist(x=x, bins=bins, histtype='step', label=hist_desc, weights=weights)
 
     if not x_min == None:
         plt.autoscale(enable=False, axis='x')
@@ -50,4 +50,4 @@ def make_hist(x, bins, title, x_label='', weights=None, x_min=None, x_max=None):
     plt.legend(loc='best')
     plt.tight_layout()
     plt.savefig(img_path)
-    plt.show()
+    #plt.show()
