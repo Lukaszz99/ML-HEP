@@ -51,3 +51,15 @@ def make_hist(x, bins, title, x_label='', x_min=None, x_max=None, weights=None, 
     plt.tight_layout()
     plt.savefig(img_path)
     #plt.show()
+
+def make_hist_2d(x, y, title, x_label='', y_label=''):
+    # clear plt buffer
+    plt.clf()
+
+    plt.hist2d(x,y, bins=150)
+    plt.title(title)
+    plt.xlabel(x_label)
+    plt.ylabel(y_label)
+    plt.colorbar().set_label('Counts')
+    plt.savefig(f'img/{title}')
+    #plt.show()

@@ -12,7 +12,7 @@ def make_hist_signal(array, labels):
     output_dir = 'img_with_weights/'
     make_hist(array[:, label_position(labels, 'm')], 220, 'Signal_mass_pt12', 'mass [GeV / c^2]', 1.862, 1.866, weights=weightArray, output_folder=output_dir)
     make_hist(array[:, label_position(labels, 'pt')], 150, 'Signal_pt_12', 'pt [GeV]', weights=weightArray, output_folder=output_dir)
-    make_hist(array[:, label_position(labels, 'decayLength')], 150, 'Signal_decayLength_pt_12', 'pt [GeV]', weights=weightArray, output_folder=output_dir)
+    make_hist(array[:, label_position(labels, 'decayLength')], 150, 'Signal_decayLength_pt_12', weights=weightArray, output_folder=output_dir)
     make_hist(array[:, label_position(labels, 'dca12')], 150, 'Signal_dca12_pt_12', weights=weightArray, output_folder=output_dir)
     
     make_hist(array[:, label_position(labels, 'ptKaon')], 150, 'Signal_ptKaon_pt_12', weights=weightArray, output_folder=output_dir)
@@ -24,9 +24,9 @@ def make_hist_signal(array, labels):
 def make_hist_background(array, labels):
     '''It requires output_folder directory to work!!!'''
     output_dir = 'img/'
-    make_hist(array[:, label_position(labels, 'm')], 220, 'Background_mass_pt12', 'mass [GeV / c^2]', 1.862, 1.866, output_folder=output_dir)
+    make_hist(array[:, label_position(labels, 'm')], 220, 'Background_mass_pt12', 'mass [GeV / c^2]', output_folder=output_dir)
     make_hist(array[:, label_position(labels, 'pt')], 150, 'Background_pt_12', 'pt [GeV]', output_folder=output_dir)
-    make_hist(array[:, label_position(labels, 'decayLength')], 150, 'Background_decayLength_pt_12', 'pt [GeV]', output_folder=output_dir)
+    make_hist(array[:, label_position(labels, 'decayLength')], 150, 'Background_decayLength_pt_12', output_folder=output_dir)
     make_hist(array[:, label_position(labels, 'dca12')], 150, 'Background_dca12_pt_12', output_folder=output_dir)
     
     make_hist(array[:, label_position(labels, 'ptKaon')], 150, 'Background_ptKaon_pt_12', output_folder=output_dir)
