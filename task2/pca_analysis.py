@@ -33,11 +33,16 @@ def main(argv):
 
     # array jest teraz ustandaryzowany (mean=0, std=1) oraz zawiera tylko intersujace zmienne
     array = SC().fit_transform(array[:, feat_idxs])
-
+    print(np.max(array[:, 4]))
+    print(np.min(array[:, 4]))
+    print(np.mean(array[:, 4]))
+    print(np.std(array[:, 4]))
     # chcemy zachowac oryginalna wymiarowosc zbioru (liczbe kolumn)
-    pca = PCA(n_components=array.shape[1])
+    """pca = PCA(n_components=array.shape[1])
 
     pca.fit(array)
+
+    print(pca.explained_variance_ratio_)
 
     feature_importance = []
     for i in range(pca.explained_variance_ratio_.shape[0]):
@@ -54,15 +59,15 @@ def main(argv):
 
     analysis_output = []
     for i in range(len(features)):
-        analysis_output.append(f'{features[i]}: {feature_importance[i]}\n')
+        analysis_output.append(f'{features[i]}: {feature_importance[i]}\n')"""
 
 
     # zapisz do pliku txt wynik analizy
-    f = open(f'{inputfile[:-4]}_pca.txt', 'w+')
-    f.write(f'File: {inputfile}\n')
-    f.write('Features with importance\n')
-    f.writelines(analysis_output)
-    f.close()
+    #f = open(f'{inputfile[:-4]}_pca.txt', 'w+')
+    #f.write(f'File: {inputfile}\n')
+    #f.write('Features with importance\n')
+    #f.writelines(analysis_output)
+    #f.close()
 
 
     # run Garbage collector
