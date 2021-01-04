@@ -52,11 +52,11 @@ def make_hist(x, bins, title, x_label='', x_min=None, x_max=None, weights=None, 
     plt.savefig(img_path)
     #plt.show()
 
-def make_hist_2d(x, y, title, x_label='', y_label=''):
+def make_hist_2d(x, y, bins, title, x_label='', y_label='', weights=None, xy_lim=None):
     # clear plt buffer
     plt.clf()
 
-    plt.hist2d(x,y, bins=150)
+    plt.hist2d(x,y, bins=bins, weights=weights, range=xy_lim)
     plt.title(title)
     plt.xlabel(x_label)
     plt.ylabel(y_label)
