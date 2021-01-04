@@ -51,19 +51,20 @@ def hist2d_signal(array, labels, source='s'):
     idx_dcaPion = label_position(labels, 'dcaPion')
     idx_ptKaon = label_position(labels, 'ptKaon')
     idx_dcaKaon = label_position(labels, 'dcaKaon')
+    weightArray = array[:, label_position(labels, 'matchHftWeight')]
 
-    make_hist_2d(array[:, idx_m], array[:, idx_pt], f'{source}_m_vs_pt', 'm', 'pt')
-    make_hist_2d(array[:, idx_pt], array[:, idx_decayLength], f'{source}_pt_vs_decayLength', 'pt', 'decayLength')
-    make_hist_2d(array[:, idx_pt], array[:, idx_dcaV0ToPv], f'{source}_pt_vs_dcaV0ToPv', 'pt', 'dcaV0ToPv')
-    make_hist_2d(array[:, idx_dcaV0ToPv], array[:, idx_ptPion], f'{source}_dcaV0ToPv_vs_ptPion', 'dcaV0ToPv', 'ptPion')
-    make_hist_2d(array[:, idx_dcaV0ToPv], array[:, idx_ptKaon], f'{source}_dcaV0ToPv_vs_ptKaon', 'dcaV0ToPv', 'ptKaon')
-    make_hist_2d(array[:, idx_pt], array[:, idx_dca12], f'{source}_pt_vs_dca12', 'pt', 'dca12')
-    make_hist_2d(array[:, idx_pt], array[:, idx_ptPion], f'{source}_pt_vs_ptPion', 'pt', 'ptPion')
-    make_hist_2d(array[:, idx_pt], array[:, idx_ptKaon], f'{source}_pt_vs_ptKaon', 'pt', 'ptKaon')
-    make_hist_2d(array[:, idx_ptPion], array[:, idx_ptKaon], f'{source}_ptPion_vs_ptKaon', 'ptPion', 'ptKaon')
+    make_hist_2d(array[:, idx_m], array[:, idx_pt],150, f'{source}_m_vs_pt', 'm', 'pt', weights=weightArray)
+    make_hist_2d(array[:, idx_pt], array[:, idx_decayLength],150, f'{source}_pt_vs_decayLength', 'pt', 'decayLength', weights=weightArray,xy_lim=[[1,2],[0,.1]])
+    make_hist_2d(array[:, idx_pt], array[:, idx_dcaV0ToPv],150, f'{source}_pt_vs_dcaV0ToPv', 'pt', 'dcaV0ToPv', weights=weightArray, xy_lim=[[1,2],[0,.02]])
+    make_hist_2d(array[:, idx_dcaV0ToPv], array[:, idx_ptPion],150, f'{source}_dcaV0ToPv_vs_ptPion', 'dcaV0ToPv', 'ptPion', weights=weightArray, xy_lim=[[0,.02],[0,2.5]])
+    make_hist_2d(array[:, idx_dcaV0ToPv], array[:, idx_ptKaon], 150, f'{source}_dcaV0ToPv_vs_ptKaon', 'dcaV0ToPv', 'ptKaon', weights=weightArray, xy_lim=[[0,.02],[0,2.5]])
+    make_hist_2d(array[:, idx_pt], array[:, idx_dca12],200, f'{source}_pt_vs_dca12', 'pt', 'dca12', weights=weightArray)
+    make_hist_2d(array[:, idx_pt], array[:, idx_ptPion],150, f'{source}_pt_vs_ptPion', 'pt', 'ptPion', weights=weightArray)
+    make_hist_2d(array[:, idx_pt], array[:, idx_ptKaon],150, f'{source}_pt_vs_ptKaon', 'pt', 'ptKaon', weights=weightArray)
+    make_hist_2d(array[:, idx_ptPion], array[:, idx_ptKaon],200, f'{source}_ptPion_vs_ptKaon', 'ptPion', 'ptKaon', weights=weightArray)
 
 
-
+#[[0, 0.1],[0,2.5]]
 
 if __name__ == '__main__':
     main(sys.argv[1:])
