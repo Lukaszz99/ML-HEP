@@ -3,8 +3,6 @@
 import ROOT as root
 import numpy as np
 
-import matplotlib.pyplot as plt
-
 def load_root(filename):
     '''Loads a TTree model from ROOT. Returns file (ROOT.TFile) and list of objects.'''
     print(f'Loading file {filename} ...')
@@ -43,15 +41,3 @@ def load_npy(inputfile):
     file_npy = file_npy[1:].astype('float64')
 
     return file_npy, file_labels
-
-def make_hist_2d(x, y, title, x_label='', y_label=''):
-    # clear plt buffer
-    plt.clf()
-
-    plt.hist2d(x,y, bins=150)
-    plt.title(title)
-    plt.xlabel(x_label)
-    plt.ylabel(y_label)
-    plt.colorbar().set_label('Counts')
-    plt.savefig(f'img/{title}')
-    #plt.show()

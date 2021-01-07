@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 import numpy as np
 import sys, getopt
 import time
@@ -39,26 +40,22 @@ def main(argv):
     hist_1d(signal[:, signal_labels.index('m')], background[:, background_labels.index('m')], 'm', weights=weights)
     hist_1d(signal[:, signal_labels.index('pt')], background[:, background_labels.index('pt')], 'pt', weights=weights)
     hist_1d(signal[:, signal_labels.index('dca12')], background[:, background_labels.index('dca12')], 'dca12', weights=weights)
-    hist_1d(signal[:, signal_labels.index('decayLength')], background[:, background_labels.index('decayLength')], 'decayLenght', x_max=0.24, weights=weights)
-    hist_1d(signal[:, signal_labels.index('dcaV0ToPv')], background[:, background_labels.index('dcaV0ToPv')], 'dcaV0ToPv', x_max=0.02, weights=weights)
+    hist_1d(signal[:, signal_labels.index('decayLength')], background[:, background_labels.index('decayLength')], 'decayLenght', weights=weights)
+    hist_1d(signal[:, signal_labels.index('dcaV0ToPv')], background[:, background_labels.index('dcaV0ToPv')], 'dcaV0ToPv', weights=weights)
     hist_1d(signal[:, signal_labels.index('ptKaon')], background[:, background_labels.index('ptKaon')], 'ptKaon', weights=weights)
-    hist_1d(signal[:, signal_labels.index('dcaKaon')], background[:, background_labels.index('dcaKaon')], 'dcaKaon', x_max=0.15, weights=weights)
+    hist_1d(signal[:, signal_labels.index('dcaKaon')], background[:, background_labels.index('dcaKaon')], 'dcaKaon', weights=weights)
     hist_1d(signal[:, signal_labels.index('ptPion')], background[:, background_labels.index('ptPion')], 'ptPion', weights=weights)
-    hist_1d(signal[:, signal_labels.index('dcaPion')], background[:, background_labels.index('dcaPion')], 'dcaPion', x_max=0.15, weights=weights)
+    hist_1d(signal[:, signal_labels.index('dcaPion')], background[:, background_labels.index('dcaPion')], 'dcaPion', weights=weights)
 
     print('Done!')
     
 
-def hist_1d(signal, background, x_label, weights=None, x_max=None):
+def hist_1d(signal, background, x_label, weights=None):
     plt.clf()
 
-    fig, ax1 = plt.subplots(figsize=(10, 5))
+    bins = 400
 
-    if x_max != None:
-        ax1.set_xlim((0, x_max))
-        bins = 400
-    else:
-        bins = 150
+    fig, ax1 = plt.subplots(figsize=(10, 5))
 
     # signal hist
     ax1.hist(signal, bins=bins, weights=weights, histtype='step', color='blue')
@@ -72,11 +69,7 @@ def hist_1d(signal, background, x_label, weights=None, x_max=None):
     ax2.hist(background, bins=bins, histtype='step', color='red')
     ax2.set_ylabel('Backgound', color='red')
 
-    # inaczej oś Y bedzie przycięta
-    fig.tight_layout()
-
-    # zobacz, czy title sie zgadza, w zaleznosci co chchesz zapisac
-    title = f'{x_label}_signal_vs_background_12_weight'
+    title = f'{x_label}_signal_vs_background_12'
     plt.title(title)
 
     # opis histogramu
@@ -86,11 +79,11 @@ def hist_1d(signal, background, x_label, weights=None, x_max=None):
          \nMean {np.mean(background):.4f} \nStd dev {np.std(background):.4f}'
     hist_desc = f'Signal: {sgn_desc} \n\nBackground: {bckg_desc}'
 
-    #plt.text(0.4, 0.2, hist_desc, transform=ax1.transAxes)
+    # zeby nic nie ucieło
+    plt.tight_layout()
 
     # save file
-    #img_path = f'../img/hist1d/{title}'
-    img_path = title
+    img_path = f'../img/hist1d/{title}'
     plt.savefig(img_path)
     #plt.show()
 
