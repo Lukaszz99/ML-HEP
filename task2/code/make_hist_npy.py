@@ -10,7 +10,7 @@ from custom_fnk import label_position, load_npy
     
 def main(argv):
     try:
-        opts, args = getopt.getopt(argv, 's:b:')
+        opts, args = getopt.getopt(argv, 'sb')
     except getopt.GetoptError:
         print('Error...')
         sys.exit(2)

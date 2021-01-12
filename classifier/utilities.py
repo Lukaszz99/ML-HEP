@@ -11,16 +11,20 @@ def load_npy(inputfile):
 
     return file_npy, file_labels
 
-def prepare_set():
-    npy, labels = load_npy('../data/D0_set.npy')
+def prepare_set(filename):
+    npy, labels = load_npy(filename)
 
     # przyogowanie danych do trenowania i testu
     np.random.shuffle(npy)
     
     weights = npy[:, -2]
 
-    train_weights = weights[:50000]
-    test_weights = weights[50000:60000]
+    set_size = npy.shape[0]
+
+    rng = int(0.9 * set_size)
+
+    train_weights = weights[:rng]
+    test_weights = weights[rng:set_size]
 
     npy = np.delete(npy, -2, axis=1)
     
@@ -28,10 +32,10 @@ def prepare_set():
     
     targets = npy[:, -1]
     
-    X_train = npy[:50000, :-1]
-    y_train = targets[:50000]
+    X_train = npy[:rng, :-1]
+    y_train = targets[:rng]
     
-    X_test = npy[50000:60000, :-1]
-    y_test = targets[50000:60000]
+    X_test = npy[rng:set_size, :-1]
+    y_test = targets[rng:set_size]
     
     return X_train, y_train, X_test, y_test, train_weights, test_weights
