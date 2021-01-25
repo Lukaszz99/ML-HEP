@@ -32,7 +32,7 @@ class SVC_classifier:
         self.svc_gs = self.svc_gs.fit(X, y)
 
         self.training_time = time() - start_time
-        self.best_params = self.lr_gs.best_params_
+        self.best_params = self.svc_gs.best_params_
 
     def calc_efficiency(self, X, y):
         self.score = high_score(self.svc_gs, X, y)

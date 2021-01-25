@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import numpy as np
 
 def load_npy(inputfile):
@@ -52,13 +53,13 @@ def get_Xy(learning_samples, testing_samples, sb_big_ratio=False):
         X_train = X_train[:learning_samples, 1:]
         y_train = y_train[:learning_samples]
     except IndexError:
-        print(f'Wrong learning_samples value: {learning_samples}')
+        print('Wrong learning_samples value: ', learning_samples)
 
     try:
         X_test = X_test[:testing_samples, 1:]
         y_test = y_test[:testing_samples]
     except IndexError:
-        print(f'Wrong testing_samples value: {testing_samples}')
+        print('Wrong testing_samples value: ', testing_samples)
 
     return X_train, y_train, X_test, y_test
 
@@ -96,7 +97,7 @@ def high_score(clf, X, y):
 
 def save_result(model, text):
     path = f'{model}.txt'
-    file = open(path, 'w+')
+    file = open(path, 'a+')
 
     file.write(text)
     file.close()
