@@ -15,7 +15,7 @@ class LR:
 
         if with_PCA:
             self.pipe = make_pipeline(StandardScaler(), PCA(n_components=3), 
-                    LogisticRegression(max_iter=200, n_jobs=-1))
+                    LogisticRegression(max_iter=500, n_jobs=-1))
         else:
             self.pipe = make_pipeline(StandardScaler(), 
             LogisticRegression(max_iter=200, n_jobs=-1))

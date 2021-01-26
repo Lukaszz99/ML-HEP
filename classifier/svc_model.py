@@ -10,7 +10,8 @@ from sklearn.decomposition import PCA
 
 class SVC_classifier:
     def __init__(self, with_PCA=True):
-        self.value_param = [0.01, 0.1, 1.0, 10, 100, 1000]
+        self.value_param_small = [0.01, 0.1, 1.0]
+        self.value_param_big = [10, 100, 1000]
         self.class_weight = [None, 'balanced']
 
         if with_PCA:
@@ -18,8 +19,8 @@ class SVC_classifier:
         else:
             self.pipe = make_pipeline(StandardScaler(), SVC())
 
-        self.param_grid = [{'svc__C': self.value_param,
-                  'svc__gamma': self.value_param,
+        self.param_grid = [{'svc__C': self.value_param_big,
+                  'svc__gamma': self.value_param_small,
                   'svc__class_weight': self.class_weight}]
 
         self.svc_gs = GridSearchCV(estimator=self.pipe, 

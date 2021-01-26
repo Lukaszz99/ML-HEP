@@ -1,0 +1,18 @@
+Time 2021-01-26 16:21:27.272524 
+Model SVC 
+SB_ratio 1:2 
+PCA True 
+Training_time: 7652.269475698471s 
+Efficiency: 0.8425744200800956 
+Best params: {'svc__C': 1000, 'svc__class_weight': 'balanced', 'svc__gamma': 0.1}
+
+
+Time 2021-01-26 17:10:44.372100 
+Model SVC 
+SB_ratio 1:350 
+PCA True 
+Training_time: 48.78490114212036s 
+Efficiency: 0.8337686054851352 
+Best params: {'svc__C': 10, 'svc__class_weight': 'balanced', 'svc__gamma': 0.1}
+
+

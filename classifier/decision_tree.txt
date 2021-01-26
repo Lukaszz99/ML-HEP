@@ -1,0 +1,18 @@
+Time 2021-01-26 14:10:26.201966 
+Model decision_tree 
+SB_ratio 1:2 
+PCA True 
+Training_time: 20.948156595230103s 
+Efficiency: 0.902082469564912 
+Best params: {'class_weight': None, 'max_depth': None}
+
+
+Time 2021-01-26 14:11:20.213292 
+Model decision_tree 
+SB_ratio 1:350 
+PCA True 
+Training_time: 18.23066282272339s 
+Efficiency: 0.8707680083892592 
+Best params: {'class_weight': 'balanced', 'max_depth': 10}
+
+

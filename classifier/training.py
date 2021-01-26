@@ -27,13 +27,13 @@ if __name__ == "__main__":
     # Dla SB_big_ratio False:
     # Max learning = 60 000, testing = 7 000
 
-    learning_samples = 500
-    testing_samples = 1000
+    learning_samples = 10000
+    testing_samples = 5000
 
     # czy algorytm (oprocz DecisionTree) ma uzyc PCA czy nie
     with_PCA = True
 
-    clfs = [Decision_tree(), SVC_classifier(), LR()]
+    clfs = [Decision_tree(), SVC_classifier(with_PCA=with_PCA), LR(with_PCA=with_PCA)]
 
     # TUTAJ USTAW, JAKI MODEL DO SYMULACJI
     model = clfs[1]
@@ -53,7 +53,7 @@ if __name__ == "__main__":
     if model == clfs[2]:
         model_str = 'LogisticRegression'
 
-    text_to_save = f'Time {datetime.now()} \nModel {model_str} \nSB_ratio {ratio} \nPCA {with_PCA} \nTraining_time: {time}s \nEfficiency: {score} \nBest params: {params}\n'
+    text_to_save = f'Time {datetime.now()} \nModel {model_str} \nSB_ratio {ratio} \nPCA {with_PCA} \nTraining_time: {time}s \nEfficiency: {score} \nBest params: {params}\n\n\n'
 
     print(text_to_save)
 

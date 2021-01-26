@@ -74,7 +74,7 @@ def eff_signal(clf, X, y):
             if prediction[i] == 1:
                 fit_count += 1
 
-    return fit_count
+    return fit_count / test_count
 
 def eff_background(clf, X, y):
     '''How much of background is classified as background.'''
@@ -87,7 +87,7 @@ def eff_background(clf, X, y):
             if prediction[i] == 0:
                 fit_count += 1
     
-    return (1 - fit_count / test_count) * test_count
+    return (1 - fit_count / test_count)
     
 def high_score(clf, X, y):
     '''Function for scoring argument in model optimization'''
