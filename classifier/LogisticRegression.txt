@@ -1,0 +1,35 @@
+Time 2021-01-27 14:21:17.392327 
+Model LogisticRegression 
+SB_ratio 1:2 
+PCA False 
+Training_time: 84.72372889518738s 
+Efficiency: 0.7203213630916545 
+Best params: {'logisticregression__C': 100, 'logisticregression__class_weight': 'balanced', 'logisticregression__solver': 'lbfgs'}
+
+
+Time 2021-01-27 15:14:15.656990 
+Model LogisticRegression 
+SB_ratio 1:2 
+PCA True 
+Training_time: 3.5144388675689697s 
+Efficiency: 0.5991516269298583 
+Best params: {'logisticregression__C': 0.1, 'logisticregression__class_weight': 'balanced', 'logisticregression__solver': 'lbfgs'}
+
+
+Time 2021-01-27 14:31:48.497007 
+Model LogisticRegression 
+SB_ratio 1:350 
+PCA False 
+Training_time: 87.12045383453369s 
+Efficiency: 0.7695665948150816 
+Best params: {'logisticregression__C': 1000, 'logisticregression__class_weight': 'balanced', 'logisticregression__solver': 'saga'}
+
+
+Time 2021-01-27 15:12:52.560934 
+Model LogisticRegression 
+SB_ratio 1:350 
+PCA True 
+Training_time: 5.418696165084839s 
+Efficiency: 0.554947737403757 
+Best params: {'logisticregression__C': 0.01, 'logisticregression__class_weight': 'balanced', 'logisticregression__solver': 'saga'}
+
