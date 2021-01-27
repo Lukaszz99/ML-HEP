@@ -15,10 +15,10 @@ class LR:
 
         if with_PCA:
             self.pipe = make_pipeline(StandardScaler(), PCA(n_components=3), 
-                    LogisticRegression(max_iter=500, n_jobs=-1))
+                    LogisticRegression(max_iter=2500, n_jobs=-1)) #was 500 -> 2500
         else:
             self.pipe = make_pipeline(StandardScaler(), 
-            LogisticRegression(max_iter=200, n_jobs=-1))
+            LogisticRegression(max_iter=200, n_jobs=-1)) # was 200 -> 2500
 
         self.param_grid = [{'logisticregression__C': self.value_param,
                  'logisticregression__class_weight': self.class_weight,
@@ -34,7 +34,7 @@ class LR:
         self.lr_gs = self.lr_gs.fit(X, y)
 
         self.training_time = time() - start_time
-        self.best_params = self.lrgs.best_params_
+        self.best_params = self.lr_gs.best_params_
 
     def calc_efficiency(self, X, y):
         self.score = high_score(self.lr_gs, X, y)
