@@ -1,18 +1,36 @@
-Time 2021-01-26 16:21:27.272524 
+Time 2021-01-27 19:10:12.377406 
 Model SVC 
 SB_ratio 1:2 
-PCA True 
-Training_time: 7652.269475698471s 
-Efficiency: 0.8425744200800956 
+PCA False 
+Training_time: 577.8658270835876s 
+Efficiency: 0.8604013033364664 
 Best params: {'svc__C': 1000, 'svc__class_weight': 'balanced', 'svc__gamma': 0.1}
 
 
-Time 2021-01-26 17:10:44.372100 
+Time 2021-01-27 19:20:13.079725 
+Model SVC 
+SB_ratio 1:2 
+PCA True 
+Training_time: 392.3510386943817s 
+Efficiency: 0.8408068366527921 
+Best params: {'svc__C': 1000, 'svc__class_weight': 'balanced', 'svc__gamma': 0.1}
+
+
+Time 2021-01-27 19:23:16.445331 
+Model SVC 
+SB_ratio 1:350 
+PCA False 
+Training_time: 115.10847973823547s 
+Efficiency: 0.7915257159967389 
+Best params: {'svc__C': 1000, 'svc__class_weight': 'balanced', 'svc__gamma': 0.01}
+
+
+Time 2021-01-27 19:28:36.202454 
 Model SVC 
 SB_ratio 1:350 
 PCA True 
-Training_time: 48.78490114212036s 
-Efficiency: 0.8337686054851352 
-Best params: {'svc__C': 10, 'svc__class_weight': 'balanced', 'svc__gamma': 0.1}
+Training_time: 248.14347219467163s 
+Efficiency: 0.8482462592580527 
+Best params: {'svc__C': 1000, 'svc__class_weight': 'balanced', 'svc__gamma': 0.01}
 
 
